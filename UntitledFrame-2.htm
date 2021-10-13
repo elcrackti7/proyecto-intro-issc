@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #CCCCCC;
+}
+.style1 {font-size: 36px}
+.style2 {font-family: Georgia, "Times New Roman", Times, serif}
+.style3 {color: #996666}
+.style4 {color: #FFFFFF}
+-->
+</style></head>
+
+<body>
+<div id="Layer1" class="style1" style="position:absolute; left:232px; top:-36px; width:1251px; height:245px; z-index:1">
+  <div align="center" class="style2"> 
+    <p><h2>
+<script language="JavaScript1.2">
+
+/*
+Neon Lights Text
+By JavaScript Kit (http://javascriptkit.com)
+Over 400+ free scripts here!
+*/
+
+var message="Ingenieria en sistemas computacionales"
+var neonbasecolor="gray"
+var neontextcolor="red"
+var flashspeed=100  //in milliseconds
+
+///No need to edit below this line/////
+
+var n=0
+if (document.all||document.getElementById){
+document.write('')
+for (m=0;m<message.length;m++)
+document.write('<span id="neonlight'+m+'">'+message.charAt(m)+'</span>')
+document.write('')
+}
+else
+document.write(message)
+
+function crossref(number){
+var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
+return crossobj
+}
+
+function neon(){
+
+//Change all letters to base color
+if (n==0){
+for (m=0;m<message.length;m++)
+//eval("document.all.neonlight"+m).style.color=neonbasecolor
+crossref(m).style.color=neonbasecolor
+}
+
+//cycle through and change individual letters to neon color
+crossref(n).style.color=neontextcolor
+
+if (n<message.length-1)
+n++
+else{
+n=0
+clearInterval(flashing)
+setTimeout("beginneon()",1500)
+return
+}
+}
+
+function beginneon(){
+if (document.all||document.getElementById)
+flashing=setInterval("neon()",flashspeed)
+}
+beginneon()
+
+
+</script>
+</h2>
+
+<p align="center">This free script provided by<br />
+<a href="http://javascriptkit.com">JavaScript Kit</a></p></p>
+    <p class="style3">&nbsp;</p>
+  </div>
+</div>
+<div id="Layer2" class="style4" style="position:absolute; left:44px; top:7px; width:153px; height:127px; z-index:2">
+  <embed src="twitter-blood%20(1).gif" width="144" height="117"></embed>
+</div>
+<div id="Layer1" style="position:absolute; left:7px; top:242px; width:100px; height:135px; z-index:1"></div>
+</body>
+</html>

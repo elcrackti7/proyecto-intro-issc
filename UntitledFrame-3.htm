@@ -1,0 +1,539 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 24px;
+}
+.style4 {color: #FFFFFF}
+.style5 {font-size: 24px; font-family: Arial, Helvetica, sans-serif;}
+-->
+</style></head>
+
+<body>
+<div id="Layer1" class="style4" style="position:absolute; left:624px; top:5px; width:360px; height:54px; z-index:3">
+  <div align="center" class="style5">PROYECTO</div>
+</div>
+<div id="Layer2" style="position:absolute; left:329px; top:15px; width:270px; height:188px; z-index:4">
+  <embed src="descarga.gif" width="264" height="179"></embed>
+</div>
+<div id="Layer3" style="position:absolute; left:1054px; top:15px; width:326px; height:210px; z-index:5">
+  <embed src="Anonymous-se-adjudica-caida-de-facebook-whastapp-e-instagram-780x470.jpg" width="309" height="194"></embed>
+</div>
+<div id="Layer4" style="position:absolute; left:617px; top:80px; width:354px; height:126px; z-index:6">
+  <table border="0" width="350" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+
+<form name="fire">
+Load number of bullets (1-6):<br /><input name="bullets" type="text" size=3 value=1><br />
+
+<p>
+<input name="message" type="button" value="Play Roulette!" onClick="fireit()">
+</p>
+
+</form>
+
+<script>
+
+//Russian Roulette Game- by javascriptkit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+//Credit must stay intact for use
+
+function fireit(){
+var theone=Math.floor(Math.random()*6)
+
+if (theone<=document.fire.bullets.value-1)
+alert("Bang. You\'re dead!")
+else{
+document.fire.message.value="Whew. Got lucky!"
+setTimeout("document.fire.message.value='Play Roulette'",500)
+}
+}
+
+</script>
+
+<p align="center"><br />
+</p>
+
+</td>
+  </tr>
+</table>
+</div>
+<div id="Layer5" style="position:absolute; left:177px; top:231px; width:523px; height:161px; z-index:7">
+  <SCRIPT LANGUAGE="javascript">
+
+/*
+Script by Mike Mcgrath- http://website.lineone.net/~mike_mcgrath
+Featured on JavaScript Kit (http://javascriptkit.com)
+For this and over 400+ free scripts, visit http://javascriptkit.com
+*/
+
+var alpha=new Array();
+var alpha_index=0;
+
+var bravo=new Array();
+var bravo_index=0;
+
+var running=0;
+var failnum=0;
+var advising=0;
+
+function pick()
+{
+  var choice="";
+  var blank=0;
+ 
+  for (i=0; i<words[index].length; i++)
+  {
+    t=0;
+    for(j=0; j<=alpha_index; j++) 
+    if(words[index].charAt(i)==alpha[j] || words[index].charAt(i)==alpha[j].toLowerCase()) t=1;
+    
+    if (t) choice+=words[index].charAt(i)+" ";
+    else 
+    {
+      choice+="_ ";
+      blank=1;
+    }
+  }   
+    
+  document.f.word.value=choice;
+    
+  if (!blank)
+  {
+    document.f.tried.value="   === You Win! ===";
+    document.f.score.value++;
+    running=0;
+  }
+} 
+
+
+function new_word(form)
+{
+  if(!running)
+  {
+    running=1;
+    failnum=0;
+    form.lives.value=failnum;
+    form.tried.value="";
+    form.word.value="";
+    index=Math.round(Math.random()*10000) % 100;
+    alpha[0]=words[index].charAt(0);
+    alpha[1]=words[index].charAt(words[index].length-1);
+    alpha_index=1;
+    bravo[0]=words[index].charAt(0);
+    bravo[1]=words[index].charAt(words[index].length-1);
+    bravo_index=1;
+    pick();
+  }
+  else advise("A word is already in play!");
+}
+
+function seek(letter)
+{
+  if (!running) advise(".....Click GO to start !");
+  else
+  {
+    t=0;
+    for (i=0; i<=bravo_index; i++)
+    {
+      if (bravo[i]==letter || bravo[i]==letter.toLowerCase()) t=1;
+    }
+
+    if (!t) 
+	  {
+	    document.f.tried.value+=letter+" "
+	    bravo_index++;
+	    bravo[bravo_index]=letter;
+	    
+      for(i=0;i<words[index].length;i++)
+   	  if(words[index].charAt(i)==letter || words[index].charAt(i)==letter.toLowerCase()) t=1;
+  	  
+      if(t)
+      {
+  	    alpha_index++;
+	      alpha[alpha_index]=letter;
+	    }
+	    else failnum++;
+	
+      document.f.lives.value=failnum;
+	    if (failnum==6) 
+      {
+        document.f.tried.value="You lose - Try again!";
+        document.f.word.value=words[index];
+        document.f.score.value--;
+        running=0;
+      }
+			else pick();
+	  }
+	  else advise("Letter "+letter+" is already used!");
+  }
+}
+
+function advise(msg)
+{
+  if (!advising)
+  {
+    advising=-1;
+    savetext=document.f.tried.value;  
+    document.f.tried.value=msg;
+    window.setTimeout("document.f.tried.value=savetext; advising=0;",1000);
+  }
+}
+
+var words = new Array("","acrimonious","allegiance","ameliorate","annihilate","antiseptic","articulate","authoritative","benefactor","boisterous","breakthrough","carcinogenic","censorious","chivalrous","collarbone","commendable","compendium","comprehensive","conclusive","conscientious","considerate","deferential","denouement","determinate","diffidence","disruption","earthenware","elliptical","entanglement","escutcheon","extinguish","extradition","fastidious","flamboyant","forethought","forthright","gregarious","handmaiden","honeysuckle","hypocritical","illustrious","infallible","lumberjack","mischievous","mollycoddle","nimbleness","nonplussed","obliterate","obsequious","obstreperous","opalescent","ostensible","pandemonium","paraphernalia","pawnbroker","pedestrian","peremptory","perfunctory","pernicious","perpetrate","personable","pickpocket","poltergeist","precipitous","predicament","preposterous","presumptuous","prevaricate","propensity","provisional","pugnacious","ramshackle","rattlesnake","reciprocate","recrimination","redoubtable","relinquish","remonstrate","repository","reprehensible","resolution","resplendent","restitution","retaliation","retribution","saccharine","salubrious","skulduggery","skyscraper","soothsayer","tearjerker","transcribe","turpentine","unassuming","underscore","undertaker","underwrite","unobtrusive","vernacular","waterfront","watertight");
+
+</SCRIPT>
+
+
+<FORM NAME="f">
+
+<TABLE BGCOLOR=#C0C0C0 BORDER=1>
+ <TR>
+  <TD COLSPAN=4 ALIGN=RIGHT>
+   Score : <INPUT TYPE=TEXT NAME="score" VALUE="0" onfocus="score.blur();" SIZE=2>
+   <BR>
+   Fails (6): <INPUT TYPE=TEXT NAME="lives" VALUE="0" onfocus="lives.blur();" SIZE=2>  
+  </TD>
+  <TD COLSPAN=7 ALIGN=CENTER>
+   <INPUT TYPE=TEXT NAME="word" VALUE="    --- Hangman ---" onfocus="word.blur();" SIZE=25> 
+    <BR>
+   <INPUT TYPE=TEXT NAME="tried" VALUE="Click GO to get a word." onfocus="tried.blur();" SIZE=25>  
+  </TD>
+  <TD COLSPAN=2 ALIGN=CENTER>
+   <INPUT TYPE=BUTTON onclick="new_word(this.form);" VALUE=" GO ">   
+  </TD>
+ </TR>
+ <TR>
+  <TD><INPUT TYPE=BUTTON VALUE=" A "   onclick="seek('A');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" B "   onclick="seek('B');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" C "   onclick="seek('C');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" D "   onclick="seek('D');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" E "   onclick="seek('E');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" F "   onclick="seek('F');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" G "   onclick="seek('G');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" H "   onclick="seek('H');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" I   " onclick="seek('I');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" J  "  onclick="seek('J');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" K "   onclick="seek('K');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" L  "  onclick="seek('L');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" M "   onclick="seek('M');"></TD>
+ </TR>
+ <TR>
+  <TD><INPUT TYPE=BUTTON VALUE=" N "   onclick="seek('N');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" O "   onclick="seek('O');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" P "   onclick="seek('P');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" Q "   onclick="seek('Q');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" R "   onclick="seek('R');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" S "   onclick="seek('S');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" T "   onclick="seek('T');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" U "   onclick="seek('U');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" V "   onclick="seek('V');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" W "   onclick="seek('W');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" X  "  onclick="seek('X');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" Y "   onclick="seek('Y');"></TD>
+  <TD><INPUT TYPE=BUTTON VALUE=" Z  "  onclick="seek('Z');"></TD>
+ </TR>
+</TABLE>
+
+</FORM>
+
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"></font></p>
+</div>
+<div id="Layer6" style="position:absolute; left:177px; top:17px; width:137px; height:87px; z-index:8">
+  <style>
+<!--
+.styling{
+background-color:black;
+color:lime;
+font: bold 16px MS Sans Serif;
+padding: 3px;
+}
+-->
+</style><span id="digitalclock" class="styling"></span>
+
+<script>
+<!--
+
+//LCD Clock script- by javascriptkit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+//Credit must stay intact for use
+
+var alternate=0
+var standardbrowser=!document.all&&!document.getElementById
+
+if (standardbrowser)
+document.write('<form name="tick"><input type="text" name="tock" size="11"></form>')
+
+function show(){
+if (!standardbrowser)
+var clockobj=document.getElementById? document.getElementById("digitalclock") : document.all.digitalclock
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var dn="AM"
+
+if (hours==12) dn="PM" 
+if (hours>12){
+dn="PM"
+hours=hours-12
+}
+if (hours==0) hours=12
+if (hours.toString().length==1)
+hours="0"+hours
+if (minutes<=9)
+minutes="0"+minutes
+
+if (standardbrowser){
+if (alternate==0)
+document.tick.tock.value=hours+" : "+minutes+" "+dn
+else
+document.tick.tock.value=hours+"   "+minutes+" "+dn
+}
+else{
+if (alternate==0)
+clockobj.innerHTML=hours+" : "+minutes+" "+"<sup style='font-size:70%'>"+dn+"</sup>"
+else
+clockobj.innerHTML=hours+" : "+minutes+" "+"<sup style='font-size:70%'>"+dn+"</sup>"
+}
+alternate=(alternate==0)? 1 : 0
+setTimeout("show()",1000)
+}
+window.onload=show
+
+//-->
+</script>
+
+<p><br />
+</p>
+</div>
+<div id="Layer7" style="position:absolute; left:1108px; top:435px; width:169px; height:84px; z-index:9">
+  <CENTER>
+<FORM NAME="marquee1">
+  <input name="text" size=25
+value=" tarea de sistemas alexis rodriguez ingenieria en sistemas "
+>
+</FORM>
+</CENTER>
+<SCRIPT>
+<!--
+/*Text box marquee by Dave Methvin,
+Windows Magazine
+May be used/modified if credit line is
+retained*/
+ScrollSpeed = 100
+ScrollChars = 1
+function ScrollMarquee() {
+window.setTimeout('ScrollMarquee()',ScrollSpeed);
+
+var msg = document.marquee1.text.value;
+document.marquee1.text.value =
+msg.substring(ScrollChars) +
+msg.substring(0,ScrollChars);
+}
+ScrollMarquee()
+//-->
+</SCRIPT>
+</div>
+<div id="Layer8" style="position:absolute; left:716px; top:253px; width:254px; height:32px; z-index:10">
+  <form name="dynamiccombo">
+<select name="stage2" size="1" onChange="displaysub()">
+<option value="#">This is a place Holder text </option>
+<option value="#">This is a Place Holder text </option>
+<option value="#">This is a Place Holder text </option>
+<option value="#">This is a Place Holder text </option>
+</select>
+<input type="button" name="test" value="Go!"
+onClick="gothere()">
+</form>
+
+<script>
+<!--
+
+//2-level combo box script- by javascriptkit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+//Credit must stay intact for use
+
+//STEP 1 of 2: DEFINE the main category links below
+//EXTEND array as needed following the laid out structure
+//BE sure to preserve the first line, as it's used to display main title
+
+var category=new Array()
+category[0]=new Option("SELECT A CATEGORY ", "") //THIS LINE RESERVED TO CONTAIN COMBO TITLE
+category[1]=new Option("Webmaster sites", "combo1")
+category[2]=new Option("News sites", "combo2")
+category[3]=new Option("Entertainment", "combo3")
+
+//STEP 2 of 2: DEFINE the sub category links below
+//EXTEND array as needed following the laid out structure
+//BE sure to preserve the LAST line, as it's used to display submain title
+
+var combo1=new Array()
+combo1[0]=new Option("JavaScript Kit","http://javascriptkit.com")
+combo1[1]=new Option("Dynamic Drive","http://www.dynamicdrive.com")
+combo1[2]=new Option("Freewarejava.com","http://www.freewarejava.com")
+combo1[3]=new Option("Free Web Templates","http://www.freewebtemplates.com")
+combo1[4]=new Option("Web Monkey","http://www.webmonkey.com")
+combo1[5]=new Option("BACK TO CATEGORIES","")   //THIS LINE RESERVED TO CONTAIN COMBO SUBTITLE
+
+var combo2=new Array()
+combo2[0]=new Option("CNN","http://www.cnn.com")
+combo2[1]=new Option("MSNBC","http://www.msnbc.com")
+combo2[2]=new Option("BBC News","http://news.bbc.co.uk")
+combo2[3]=new Option("ABC News","http://www.abcnews.com")
+combo2[4]=new Option("BACK TO CATEGORIES","")   //THIS LINE RESERVED TO CONTAIN COMBO SUBTITLE
+
+var combo3=new Array()
+combo3[0]=new Option("Hollywood.com","http://www.hollywood.com")
+combo3[1]=new Option("MTV","http://www.mtv.com")
+combo3[2]=new Option("ETOnline","http://etonline.com")
+combo3[3]=new Option("BACK TO CATEGORIES","")   //THIS LINE RESERVED TO CONTAIN COMBO SUBTITLE
+
+var curlevel=1
+var cacheobj=document.dynamiccombo.stage2
+
+function populate(x){
+for (m=cacheobj.options.length-1;m>0;m--)
+cacheobj.options[m]=null
+selectedarray=eval(x)
+for (i=0;i<selectedarray.length;i++)
+cacheobj.options[i]=new Option(selectedarray[i].text,selectedarray[i].value)
+cacheobj.options[0].selected=true
+
+}
+
+function displaysub(){
+if (curlevel==1){
+populate(cacheobj.options[cacheobj.selectedIndex].value)
+curlevel=2
+}
+else
+gothere()
+}
+
+
+function gothere(){
+if (curlevel==2){
+if (cacheobj.selectedIndex==cacheobj.options.length-1){
+curlevel=1
+populate(category)
+}
+else
+location=cacheobj.options[cacheobj.selectedIndex].value
+}
+}
+
+//SHOW categories by default
+populate(category)
+
+//-->
+</script>
+
+<p align="center"><br />
+</p>
+</div>
+<div id="Layer9" style="position:absolute; left:1053px; top:245px; width:429px; height:27px; z-index:11">
+  <form name="jumpurl1" onSubmit="return jumpit()">
+<input type="text" size=30 name="jumpurl2" value="http://">
+<input type="button" value="Go!" onClick="jumpit()">
+</form>
+<script>
+
+/*
+URL jump box
+By JavaScript Kit (http://javascriptkit.com)
+Over 200+ free scripts here!
+*/
+
+function jumpit(){
+window.location=document.jumpurl1.jumpurl2.value
+return false
+}
+</script>
+
+<p align="center">&nbsp;</p>
+</div>
+<div id="Layer10" style="position:absolute; left:210px; top:443px; width:384px; height:53px; z-index:12"><b>Insert Decimal Number: </b>
+  <input type = "text" name = "deci" id = "deci" size = "15" maxlength = "15" />
+<input type="button" value="Convert!" onclick="dec2bin()" />
+<br><br>
+<div id = "result"></div>
+
+<script type = "text/javascript">
+
+function dec2bin() {
+var x = document.getElementById("deci").value;
+if ((/[^0-9]/g.test(x)) || x == "") {
+alert ("You must enter an integer decimal number!");
+document.getElementById("deci").value = "";
+document.getElementById("deci").focus();
+return false;
+}
+x = parseInt(x);
+var bin = x.toString(2);
+var hex = x.toString(16).toUpperCase();
+var octal = x.toString(8);
+
+
+var figs = "The binary representation of " + x + " is " + bin + "<br>";
+figs = figs + "The hexadecimal representation of " + x + " is " + hex + "<br>";
+figs = figs + "The octal representation of " + x + " is " + octal + "<br>";
+
+document.getElementById("result").innerHTML = figs;
+}
+</script>
+
+<p align="center">&nbsp;</p>
+</div>
+<div id="Layer11" style="position:absolute; left:742px; top:409px; width:435px; height:203px; z-index:13">
+  <script>
+
+//Random password generator- by javascriptkit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+//Credit must stay intact for use
+
+var keylist="abcdefghijklmnopqrstuvwxyz123456789"
+var temp=''
+
+function generatepass(plength){
+temp=''
+for (i=0;i<plength;i++)
+temp+=keylist.charAt(Math.floor(Math.random()*keylist.length))
+return temp
+}
+
+function populateform(enterlength){
+document.pgenerate.output.value=generatepass(enterlength)
+}
+</script>
+
+<form name="pgenerate">
+<input type="text" size=18 name="output">
+<input type="button" value="Generate Password" onClick="populateform(this.form.thelength.value)"><br />
+<b>Password Length:</b> <input type="text" name="thelength" size=3 value="7">
+</form>
+
+<p align="center">&nbsp;</p>
+</div>
+<p class="style1"><a href="articulo%20vitae.html">Cvitae</a></p>
+<p class="style1"><a href="pasatiempos.html">Pasatiempos</a></p>
+<p class="style1"><a href="musica.html">Musica</a></p>
+<p class="style1"><a href="video.html">Videos</a></p>
+<p class="style1"><a href="contacto.html">Contacto</a></p>
+<p><span class="style4"><a href="DIRECTORIO.htm">DIRECTORIO</a></span></p>
+<p><a href="LOGIN.htm">LOGIN</a></p>
+<p>&nbsp;</p>
+</body>
+</html>
